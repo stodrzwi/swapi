@@ -1,0 +1,61 @@
+// Imports
+@import "https://fonts.googleapis.com/css2?family=Montserrat:wght@0,100..900;1,100..900";
+
+// Variables
+$primary-color: #ffc107;
+$primary-darken: #ffa500;
+$secondary-color: #212121;
+
+// Reset
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+// Base
+body {
+  font-family: "Montserrat", sans-serif;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.5;
+  background-color: $secondary-color;
+  color: $primary-color;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+p {
+	margin-bottom: 8px;
+}
+
+h1 {
+	font-weight: 900;
+	font-size: 5em;
+	text-align: center;
+}
+
+a {
+	color: $primary-darken;
+}
+
+button {
+	margin: 8px;
+	padding: 8px 16px;
+	font-size: 16px;
+	font-weight: 600;
+	background-color: $primary-color;
+	color: black;
+	border: none;
+	cursor: pointer;
+	border-radius: 5px;
+
+	&:hover {
+		background-color: $primary-darken;
+	}
+}

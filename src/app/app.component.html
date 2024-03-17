@@ -1,0 +1,52 @@
+<header class="start" [@scaleInOut]>
+  <h1>start a war!</h1>
+</header>
+
+<main>
+  <div class="game-board">
+    <div
+      class="resources-choice"
+      *ngIf="resourceType === ResourceType.EMPTY"
+      [@scaleInOut]
+    >
+      <button (click)="chooseResource(ResourceType.PEOPLE)">
+        Bring People!
+      </button>
+      <button (click)="chooseResource(ResourceType.STARSHIPS)">
+        Bring Starships
+      </button>
+    </div>
+
+    <div *ngIf="cards.length > 0;" [@scaleInOut]>
+      <div class="cards">
+        <app-card
+          [card]="player1Card"
+          [selectedProperty]="selectedProperty"
+        ></app-card>
+        <app-card
+          [card]="player2Card"
+          [selectedProperty]="selectedProperty"
+        ></app-card>
+      </div>
+
+      <div class="actions">
+        <button (click)="battle()">
+          {{ cards.length > 0 ? "Battle" : "Prepare to fight" }}
+        </button>
+        <p>Selected property: {{ selectedProperty | snakeToTitleCase }}</p>
+        <p>Player 1 Score: {{ player1Score }}</p>
+        <p>Player 2 Score: {{ player2Score }}</p>
+      </div>
+    </div>
+    <div class="loading-indicator" *ngIf="isLoading">
+      <mat-progress-spinner
+        diameter="50"
+        mode="indeterminate"
+      ></mat-progress-spinner>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <h5>Created using <a href="http://swapi.tech">http://swapi.tech</a></h5>
+</footer>
