@@ -1,8 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, Pipe } from '@angular/core';
 import { SwapiService } from './swapi.service';
+import { CardComponent } from './card/card.component';
 import { Card } from './card.model';
 import { ResourceType } from './resource-type.enum';
 import { animate, style, transition, trigger } from '@angular/animations';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-root',
@@ -27,7 +29,8 @@ import { animate, style, transition, trigger } from '@angular/animations';
     ]),
   ],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+  title = 'Star Wars Card Game';
   isLoading: boolean = false;
   ResourceType = ResourceType;
   resourceType: ResourceType = ResourceType.EMPTY;
@@ -42,7 +45,14 @@ export class AppComponent {
   battleLog: string[] = [];
   cardAnimationState: string = 'default';
 
-  constructor(private swapiService: SwapiService) {}
+  constructor(
+    private swapiService: SwapiService,
+    private titleService: Title
+  ) {}
+
+  ngOnInit(): void {
+    this.setTitle(this.title);
+  }
 
   chooseResource(resourceType: ResourceType): void {
     this.isLoading = true;
@@ -77,6 +87,9 @@ export class AppComponent {
   }
 
   private findCommonProperties(): void {
+    if (!this.player1Card || !this.player2Card) {
+      return;
+    }
     // Filter properties that are numbers or strings containing only numbers and exist in both cards
     this.commonProperties = Object.keys(this.player1Card).filter(
       (property) =>
@@ -124,5 +137,9 @@ export class AppComponent {
     }
 
     return array;
+  }
+
+  public setTitle(newTitle: string) {
+    this.titleService.setTitle(newTitle);
   }
 }

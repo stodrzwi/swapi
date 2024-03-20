@@ -5,7 +5,7 @@
 <main>
   <div class="game-board">
     <div
-      class="resources-choice"
+      class="game-board__resources-choice"
       *ngIf="resourceType === ResourceType.EMPTY"
       [@scaleInOut]
     >
@@ -17,8 +17,8 @@
       </button>
     </div>
 
-    <div *ngIf="cards.length > 0;" [@scaleInOut]>
-      <div class="cards">
+    <div *ngIf="cards.length > 0" [@scaleInOut]>
+      <div class="game-board__cards">
         <app-card
           [card]="player1Card"
           [selectedProperty]="selectedProperty"
@@ -29,7 +29,7 @@
         ></app-card>
       </div>
 
-      <div class="actions">
+      <div class="game-board__actions">
         <button (click)="battle()">
           {{ cards.length > 0 ? "Battle" : "Prepare to fight" }}
         </button>
@@ -38,7 +38,7 @@
         <p>Player 2 Score: {{ player2Score }}</p>
       </div>
     </div>
-    <div class="loading-indicator" *ngIf="isLoading">
+    <div class="game-board__loading-indicator" *ngIf="isLoading">
       <mat-progress-spinner
         diameter="50"
         mode="indeterminate"

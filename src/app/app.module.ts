@@ -12,20 +12,16 @@ import { SwapiService } from './swapi.service';
 import { SnakeToTitleCasePipe } from './snake-to-title-case.pipe';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    CardComponent,
-    SnakeToTitleCasePipe
-  ],
+  declarations: [AppComponent, CardComponent, SnakeToTitleCasePipe],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
     MatButtonModule,
     MatCardModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [SwapiService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

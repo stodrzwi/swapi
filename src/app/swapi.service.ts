@@ -7,18 +7,17 @@ import { Card } from './card.model';
 import { ResourceType } from './resource-type.enum';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class SwapiService {
-  private baseUrl = 'https://swapi.dev/api';
+  public baseUrl = 'https://swapi.dev/api';
 
   constructor(private http: HttpClient) {}
 
   getCards(resourceType: ResourceType): Observable<Card[]> {
-    return this.http.get<{ results: Card[] }>(`${this.baseUrl}/${resourceType}`)
-      .pipe(
-        map(response => response.results),
-      );
+    return this.http
+      .get<{ results: Card[] }>(`${this.baseUrl}/${resourceType}`)
+      .pipe(map((response) => response.results));
   }
 
   getCardByUrl(url: string): Observable<Card> {

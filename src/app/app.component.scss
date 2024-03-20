@@ -1,27 +1,17 @@
 @import "../styles.scss";
 
 main {
-  //   display: flex;
-  //   flex-direction: row;
-
   .game-board {
     display: flex;
     flex-direction: column;
     height: 40vh;
 
-    .cards {
+    &__cards {
       display: flex;
       flex-direction: row;
     }
 
-    mat-card {
-      background-color: $secondary-color;
-      width: 300px;
-      border: 2px solid yellow;
-      margin: 16px;
-    }
-
-    .loading-indicator {
+    &__loading-indicator {
       display: flex;
       justify-content: center;
       align-items: center;
